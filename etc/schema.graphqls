@@ -1,0 +1,69 @@
+
+type Query {
+    
+    faqQuestion (
+        question_id: String @doc(description: "Query by question_id.")
+    ): FaqQuestion @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqQuestion") @doc(description: "get list faq questions")
+    faqCategory (
+        category_id: String @doc(description: "Query by category_id.")
+    ): FaqCategory @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqCategory") @doc(description: "get list faq question categories")
+    faqTag (
+        tag_id: String @doc(description: "Query by tag_id.")
+    ): FaqTag @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqTag") @doc(description: "get list faq question tags")
+}
+
+type FaqQuestion {
+    
+    question_id : String  @doc(description: "question_id")
+    title : String  @doc(description: "title")
+    author_email : String  @doc(description: "author_email")
+    author_name : String  @doc(description: "author_name")
+    answer : String  @doc(description: "answer")
+    creation_time : String  @doc(description: "creation_time")
+    update_time : String  @doc(description: "update_time")
+    is_featured : String  @doc(description: "is_featured")
+    is_active : String  @doc(description: "is_active")
+    page_title : String  @doc(description: "page_title")
+    meta_keywords : String  @doc(description: "meta_keywords")
+    meta_description : String  @doc(description: "meta_description")
+    question_position : String  @doc(description: "question_position")
+}
+
+type FaqCategory {
+    
+    category_id : String  @doc(description: "category_id")
+    title : String  @doc(description: "title")
+    page_title : String  @doc(description: "page_title")
+    identifier : String  @doc(description: "identifier")
+    description : String  @doc(description: "description")
+    is_active : String  @doc(description: "is_active")
+}
+
+type FaqTag {
+    
+    tag_id : String  @doc(description: "tag_id")
+    question_id : String  @doc(description: "question_id")
+    name : String  @doc(description: "name")
+    alias : String  @doc(description: "alias")
+}
+
+type Mutation {
+    
+    faqSubmitQuestion (
+        title: String @doc(description: "Query by title.")
+        author_email: String @doc(description: "Query by author_email.")
+        author_name: String @doc(description: "Query by author_name.")
+        answer: String @doc(description: "Query by answer.")
+        creation_time: String @doc(description: "Query by creation_time.")
+        update_time: String @doc(description: "Query by update_time.")
+        is_featured: String @doc(description: "Query by is_featured.")
+        is_active: String @doc(description: "Query by is_active.")
+        page_title: String @doc(description: "Query by page_title.")
+        meta_keywords: String @doc(description: "Query by meta_keywords.")
+        meta_description: String @doc(description: "Query by meta_description.")
+        question_position: String @doc(description: "Query by question_position.")
+        stores: String @doc(description: "Query by stores.")
+        question_products: String @doc(description: "Query by question_products.")
+        categories: String @doc(description: "Query by categories.")
+    ): String @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqSubmitQuestion") @doc(description: "Submit faq question on product detail page")
+}
