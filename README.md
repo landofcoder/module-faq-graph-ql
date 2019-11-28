@@ -1,7 +1,5 @@
 # magento2-faq-graph-ql
 
-![Landofcoder Black Friday Sale Upto 50%](https://landofcoder.com/media/wysiwyg/slideshow/black-friday-2019.png)
-
 ###### What is this extension about?
 With Magento 2 FAQ Graphql Extension, you will not need to worry about creating useful and nice FAQ page for your ecommerce website. The extension will help you to set up nice informative & SEO-friendly magento 2 FAQ page. With faq page, your customers will find convenient, easily and quick to resolve common issues.
 
