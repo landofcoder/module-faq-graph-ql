@@ -3,16 +3,18 @@
 
 namespace Lof\FaqGraphQl\Model\Resolver\DataProvider;
 
+use Lof\Faq\Api\TagsInterface;
+
 class FaqTag
 {
 
     private $tagsManagement;
 
     /**
-     * @param Lof\Faq\Api\TagsManagementInterface $tagsManagement
+     * @param TagsInterface $tagsManagement
      */
     public function __construct(
-        Lof\Faq\Api\TagsManagementInterface $tagsManagement
+        TagsInterface $tagsManagement
     ) {
         $this->tagsManagement = $tagsManagement;
     }

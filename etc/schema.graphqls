@@ -1,6 +1,6 @@
 
 type Query {
-    
+
     faqQuestion (
         question_id: String @doc(description: "Query by question_id.")
     ): FaqQuestion @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqQuestion") @doc(description: "get list faq questions")
@@ -13,7 +13,7 @@ type Query {
 }
 
 type FaqQuestion {
-    
+
     question_id : String  @doc(description: "question_id")
     title : String  @doc(description: "title")
     author_email : String  @doc(description: "author_email")
@@ -30,7 +30,7 @@ type FaqQuestion {
 }
 
 type FaqCategory {
-    
+
     category_id : String  @doc(description: "category_id")
     title : String  @doc(description: "title")
     page_title : String  @doc(description: "page_title")
@@ -40,7 +40,7 @@ type FaqCategory {
 }
 
 type FaqTag {
-    
+
     tag_id : String  @doc(description: "tag_id")
     question_id : String  @doc(description: "question_id")
     name : String  @doc(description: "name")
@@ -48,7 +48,7 @@ type FaqTag {
 }
 
 type Mutation {
-    
+
     faqSubmitQuestion (
         title: String @doc(description: "Query by title.")
         author_email: String @doc(description: "Query by author_email.")
