@@ -3,22 +3,35 @@
 
 namespace Lof\FaqGraphQl\Model\Resolver\DataProvider;
 
+use Lof\Faq\Api\CategoriesInterface;
+
+/**
+ * Class FaqCategory
+ * @package Lof\FaqGraphQl\Model\Resolver\DataProvider
+ */
 class FaqCategory
 {
 
+    /**
+     * @var CategoriesInterface
+     */
     private $categories;
 
     /**
-     * @param Lof\Faq\Api\CategoriesInterface $categories
+     * @param CategoriesInterface $categories
      */
     public function __construct(
-        Lof\Faq\Api\CategoriesInterface $categories
+        CategoriesInterface $categories
     ) {
         $this->categories = $categories;
     }
 
-    public function getFaqCategory()
+    /**
+     * @param $categoryId
+     * @return \Lof\Faq\Api\Data\CategoryInterface
+     */
+    public function getFaqCategory($categoryId)
     {
-        return 'proviced data';
+        return $this->categories->getById($categoryId);
     }
 }

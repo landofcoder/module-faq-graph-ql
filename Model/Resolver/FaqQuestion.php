@@ -34,7 +34,6 @@ class FaqQuestion implements ResolverInterface
         array $value = null,
         array $args = null
     ) {
-        $faqQuestionData = $this->faqQuestionDataProvider->getFaqQuestion();
-        return $faqQuestionData;
+        return $this->faqQuestionDataProvider->getFaqQuestion($args['question_id']);
     }
 }

@@ -16,7 +16,7 @@ class FaqTag implements ResolverInterface
     private $faqTagDataProvider;
 
     /**
-     * @param DataProvider\FaqTag $faqTagRepository
+     * @param DataProvider\FaqTag $faqTagDataProvider
      */
     public function __construct(DataProvider\FaqTag $faqTagDataProvider)
     {

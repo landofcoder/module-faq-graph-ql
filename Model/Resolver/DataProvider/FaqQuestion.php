@@ -3,22 +3,35 @@
 
 namespace Lof\FaqGraphQl\Model\Resolver\DataProvider;
 
+use Lof\Faq\Api\QuestionManagementInterface;
+
+/**
+ * Class FaqQuestion
+ * @package Lof\FaqGraphQl\Model\Resolver\DataProvider
+ */
 class FaqQuestion
 {
 
+    /**
+     * @var QuestionManagementInterface
+     */
     private $questionManagement;
 
     /**
-     * @param Lof\Faq\Api\QuestionManagementInterface $questionManagement
+     * @param QuestionManagementInterface $questionManagement
      */
     public function __construct(
-        Lof\Faq\Api\QuestionManagementInterface $questionManagement
+        QuestionManagementInterface $questionManagement
     ) {
         $this->questionManagement = $questionManagement;
     }
 
-    public function getFaqQuestion()
+    /**
+     * @param $questionId
+     * @return \Lof\Faq\Api\Data\QuestionInterface
+     */
+    public function getFaqQuestion($questionId)
     {
-        return 'proviced data';
+        return $this->questionManagement->getById($questionId);
     }
 }

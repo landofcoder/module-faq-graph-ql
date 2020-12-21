@@ -10,9 +10,16 @@ use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
+/**
+ * Class FaqCategory
+ * @package Lof\FaqGraphQl\Model\Resolver
+ */
 class FaqCategory implements ResolverInterface
 {
 
+    /**
+     * @var DataProvider\FaqCategory
+     */
     private $faqCategoryDataProvider;
 
     /**
@@ -34,7 +41,6 @@ class FaqCategory implements ResolverInterface
         array $value = null,
         array $args = null
     ) {
-        $faqCategoryData = $this->faqCategoryDataProvider->getFaqCategory();
-        return $faqCategoryData;
+        return $this->faqCategoryDataProvider->getFaqCategory($args['category_id']);
     }
 }
