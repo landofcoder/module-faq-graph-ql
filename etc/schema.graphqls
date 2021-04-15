@@ -4,12 +4,21 @@ type Query {
     faqQuestion (
         question_id: String @doc(description: "Query by question_id.")
     ): FaqQuestion @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqQuestion") @doc(description: "get list faq questions")
+
     faqCategory (
         category_id: String @doc(description: "Query by category_id.")
     ): FaqCategory @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqCategory") @doc(description: "get list faq question categories")
+
     faqTag (
         tag_id: String @doc(description: "Query by tag_id.")
     ): FaqTag @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqTag") @doc(description: "get list faq question tags")
+
+    faqCategoryList(
+        search: String @doc(description: "Performs a full-text search using the specified key words."),
+        filter: FaqCategoryFilterInput @doc(description: "Identifies which product attributes to search for and return."),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. This attribute is optional."),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1."),
+    ): FaqCategories @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\Categories") @doc(description: "The categories query searches for categories that match the criteria specified in the search and filter attributes")
 }
 
 type FaqQuestion {
@@ -27,6 +36,13 @@ type FaqQuestion {
     meta_keywords : String  @doc(description: "meta_keywords")
     meta_description : String  @doc(description: "meta_description")
     question_position : String  @doc(description: "question_position")
+    categories : FaqCategories @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionCategoryResolver")
+    tags : Tags @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionTagResolver")
+    question_product : [String]
+    store_id : [String]
+    relatedquestions : Questions @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionRelatedResolver")
+    vote : Vote @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionVoteResolver")
+
 }
 
 type FaqCategory {
@@ -37,7 +53,60 @@ type FaqCategory {
     identifier : String  @doc(description: "identifier")
     description : String  @doc(description: "description")
     is_active : String  @doc(description: "is_active")
+    grid_column : String  @doc(description: "grid_column")
+    layout_type : String  @doc(description: "layout_type")
+    page_layout : String  @doc(description: "page_layout")
+    meta_keywords : String  @doc(description: "meta_keywords")
+    meta_description : String  @doc(description: "meta_description")
+    image : String  @doc(description: "Image.") @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\CategoryImageResolver")
+    creation_time : String  @doc(description: "creation_time")
+    update_time : String  @doc(description: "update_time")
+    position : String  @doc(description: "position")
+    include_in_sidebar : String  @doc(description: "include_in_sidebar")
+    parent_id : String  @doc(description: "parent_id")
+    title_size : String  @doc(description: "title_size")
+    title_color : String  @doc(description: "title_color")
+    title_color_active : String  @doc(description: "title_color_active")
+    title_bg : String  @doc(description: "title_bg")
+    title_bg_active : String  @doc(description: "title_bg_active")
+    border_width : String  @doc(description: "border_width")
+    title_border_color : String  @doc(description: "title_border_color")
+    title_border_radius : String  @doc(description: "title_border_radius")
+    body_size : String  @doc(description: "body_size")
+    body_color : String  @doc(description: "body_color")
+    body_bg : String  @doc(description: "body_bg")
+    question_margin : String  @doc(description: "question_margin")
+    question_icon : String  @doc(description: "question_icon")
+    question_active_icon : String  @doc(description: "question_active_icon")
+    animation_class : String  @doc(description: "animation_class")
+    animation_speed : String  @doc(description: "animation_speed")
+    cat_icon : String  @doc(description: "cat_icon")
+    questions : Questions @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\CategoryQuestionResolver")
+    store_id : [String]
 }
+
+type Questions {
+    total_count: Int @doc(description: "The number of question returned")
+    page_info: SearchResultPageInfo @doc(description: "Page info")
+    items: [FaqQuestion] @doc(description: "An array of questions")
+}
+
+type FaqCategories {
+    total_count: Int @doc(description: "The number of categories returned")
+    page_info: SearchResultPageInfo @doc(description: "Page info")
+    items: [FaqCategory] @doc(description: "An array of categories")
+}
+
+type Tags {
+    total_count : Int
+    items : [FaqTag]
+}
+
+type Vote {
+    like : Int
+    dislike : Int
+}
+
 
 type FaqTag {
 
@@ -46,6 +115,7 @@ type FaqTag {
     name : String  @doc(description: "name")
     alias : String  @doc(description: "alias")
 }
+
 
 type Mutation {
 
@@ -66,4 +136,13 @@ type Mutation {
         question_products: String @doc(description: "Query by question_products.")
         categories: String @doc(description: "Query by categories.")
     ): String @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqSubmitQuestion") @doc(description: "Submit faq question on product detail page")
+}
+
+input FaqCategoryFilterInput {
+    category_id: FilterTypeInput @doc(description: "Category ID")
+    identifier: FilterTypeInput @doc(description: "Identifier")
+    is_active: FilterTypeInput @doc(description: "Status")
+    title: FilterTypeInput @doc(description: "Title")
+    layout_type: FilterTypeInput @doc(description: "Layout Type")
+    or: FaqCategoryFilterInput @doc(description: "The keyword required to perform a logical OR comparison")
 }
