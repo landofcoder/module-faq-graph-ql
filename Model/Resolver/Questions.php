@@ -27,26 +27,31 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Lof\Faq\Api\CategoriesInterface;
+use Lof\Faq\Api\QuestionManagementInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder as SearchCriteriaBuilder;
 
-class Categories implements ResolverInterface
+class Questions implements ResolverInterface
 {
     /**
      * @var SearchCriteriaBuilder
      */
     private $searchCriteriaBuilder;
     /**
-     * @var CategoriesInterface
+     * @var QuestionManagementInterface
      */
-    private $categoryInterface;
+    private $questionRepository;
 
+    /**
+     * Questions constructor.
+     * @param QuestionManagementInterface $questionManagement
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     */
     public function __construct(
-        CategoriesInterface $categories,
+        QuestionManagementInterface $questionManagement,
         SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->categoryInterface = $categories;
+        $this->questionRepository = $questionManagement;
     }
 
     /**
@@ -65,14 +70,29 @@ class Categories implements ResolverInterface
         if ($args['pageSize'] < 1) {
             throw new GraphQlInputException(__('pageSize value must be greater than 0.'));
         }
-        $searchCriteria = $this->searchCriteriaBuilder->build('faqCategories', $args);
+        $tag = '';
+        if (isset($args['filter']['tag']) && $args['filter']['tag']) {
+            $tag = $args['filter']['tag'];
+            unset($args['filter']['tag']);
+        }
+        $identifier = '';
+        if (isset($args['filter']['category_identifier']) && $args['filter']['category_identifier']) {
+            $identifier = $args['filter']['category_identifier'];
+            unset($args['filter']['category_identifier']);
+        }
+        $sku = '';
+        if (isset($args['filter']['product_sku']) && $args['filter']['product_sku']) {
+            $sku = $args['filter']['product_sku'];
+            unset($args['filter']['product_sku']);
+        }
+        $searchCriteria = $this->searchCriteriaBuilder->build('faqQuestions', $args);
         $searchCriteria->setCurrentPage($args['currentPage']);
         $searchCriteria->setPageSize($args['pageSize']);
         $search = '';
         if (isset($args['search']) && $args['search']) {
             $search = $args['search'];
         }
-        $searchResult = $this->categoryInterface->getList($searchCriteria, $search);
+        $searchResult = $this->questionRepository->getList($searchCriteria, $search, $tag, $identifier, $sku);
         $totalPages = $args['pageSize'] ? ((int)ceil($searchResult->getTotalCount() / $args['pageSize'])) : 0;
 
         return [

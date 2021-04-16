@@ -26,23 +26,27 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\Resolver\Value;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Lof\Faq\Api\QuestionInfoByIdInterface;
+use Lof\Faq\Api\QuestionListByTagInterface;
 
 /**
- * Class to resolve custom attribute_set_name field in faq question GraphQL query
+ * Class to resolve custom attribute_set_name field in faq tag GraphQL query
  */
-class QuestionRelatedResolver implements ResolverInterface
+class TagQuestionResolver implements ResolverInterface
 {
 
     /**
-     * @var QuestionInfoByIdInterface
+     * @var QuestionListByTagInterface
      */
-    private $questionRepository;
+    private $questionListByTag;
 
+    /**
+     * CategoryQuestionResolver constructor.
+     * @param QuestionListByTagInterface $questionListByTag
+     */
     public function __construct(
-        QuestionInfoByIdInterface $questionRepository
+        QuestionListByTagInterface $questionListByTag
     ) {
-        $this->questionRepository = $questionRepository;
+        $this->questionListByTag = $questionListByTag;
     }
 
     /**
@@ -52,22 +56,15 @@ class QuestionRelatedResolver implements ResolverInterface
      * @param array|null $value
      * @param array|null $args
      * @return array|Value|mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        if (isset($value['relatedquestions']) && $value['relatedquestions']) {
-            $items = [];
-            foreach ($value['relatedquestions'] as $relatedquestion) {
-                if (isset($relatedquestion['relatedquestion_id']) && $relatedquestion['relatedquestion_id']) {
-                    $items[] = $this->questionRepository->getById($relatedquestion['relatedquestion_id']);
-                }
-            }
-            return [
-                'total_count' => count($items),
-                'items' => $items
-            ];
+        if (isset($value['name']) && $value['name']) {
+            $result = $this->questionListByTag->getQuestionByTagForApi($value['name']);
+            return $result->getTotalCount();
         } else {
-            return [];
+            return 0;
         }
     }
 }

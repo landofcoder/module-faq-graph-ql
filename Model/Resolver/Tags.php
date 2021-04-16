@@ -23,30 +23,23 @@ declare(strict_types=1);
 
 namespace Lof\FaqGraphQl\Model\Resolver;
 
+use Lof\Faq\Model\ResourceModel\Tag\CollectionFactory;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Lof\Faq\Api\CategoriesInterface;
-use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder as SearchCriteriaBuilder;
 
-class Categories implements ResolverInterface
+class Tags implements ResolverInterface
 {
     /**
-     * @var SearchCriteriaBuilder
+     * @var CollectionFactory
      */
-    private $searchCriteriaBuilder;
-    /**
-     * @var CategoriesInterface
-     */
-    private $categoryInterface;
+    private $tagCollectionFactory;
 
     public function __construct(
-        CategoriesInterface $categories,
-        SearchCriteriaBuilder $searchCriteriaBuilder
+        CollectionFactory $tagCollection
     ) {
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->categoryInterface = $categories;
+        $this->tagCollectionFactory = $tagCollection;
     }
 
     /**
@@ -65,23 +58,18 @@ class Categories implements ResolverInterface
         if ($args['pageSize'] < 1) {
             throw new GraphQlInputException(__('pageSize value must be greater than 0.'));
         }
-        $searchCriteria = $this->searchCriteriaBuilder->build('faqCategories', $args);
-        $searchCriteria->setCurrentPage($args['currentPage']);
-        $searchCriteria->setPageSize($args['pageSize']);
-        $search = '';
-        if (isset($args['search']) && $args['search']) {
-            $search = $args['search'];
-        }
-        $searchResult = $this->categoryInterface->getList($searchCriteria, $search);
-        $totalPages = $args['pageSize'] ? ((int)ceil($searchResult->getTotalCount() / $args['pageSize'])) : 0;
+        $collection = $this->tagCollectionFactory->create();
+        $collection->getSelect()->group('name');
+        $collection->setCurPage($args['currentPage']);
+        $collection->setPageSize($args['pageSize']);
 
         return [
-            'total_count' => $searchResult->getTotalCount(),
-            'items'       => $searchResult->getItems(),
+            'total_count' => $collection->getSize(),
+            'items'       => $collection->getData(),
             'page_info' => [
-                'page_size' => $args['pageSize'],
-                'current_page' => $args['currentPage'],
-                'total_pages' => $totalPages
+                'page_size' => $collection->getPageSize(),
+                'current_page' => $collection->getCurPage(),
+                'total_pages' => $collection->getLastPageNumber()
             ],
         ];
     }

@@ -27,7 +27,7 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\ConfigInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\FieldEntityAttributesInterface;
 
-class FilterArgumentCategories implements FieldEntityAttributesInterface
+class FilterArgumentQuestions implements FieldEntityAttributesInterface
 {
     /** @var ConfigInterface */
     private $config;
@@ -48,7 +48,7 @@ class FilterArgumentCategories implements FieldEntityAttributesInterface
     {
         $fields = [];
         /** @var Field $field */
-        foreach ($this->config->getConfigElement('FaqCategory')->getFields() as $field) {
+        foreach ($this->config->getConfigElement('FaqQuestion')->getFields() as $field) {
             $fields[$field->getName()] = [
                 'type' => 'String',
                 'fieldName' => $field->getName(),
