@@ -210,6 +210,7 @@ type Tags {
 }
 
 type FaqTag {
+
     name : String  @doc(description: "name")
     alias : String  @doc(description: "alias")
     total_question : Int @doc(description: "total question") @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\TagQuestionResolver")
@@ -253,4 +254,5 @@ input FaqQuestionFilterInput {
     category_identifier: String @doc(description: "Category Identifier")
     product_sku: String @doc(description: "Product Sku")
     or: FaqCategoryFilterInput @doc(description: "The keyword required to perform a logical OR comparison")
+
 }
