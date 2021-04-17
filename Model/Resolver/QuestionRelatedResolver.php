@@ -39,6 +39,10 @@ class QuestionRelatedResolver implements ResolverInterface
      */
     private $questionRepository;
 
+    /**
+     * QuestionRelatedResolver constructor.
+     * @param QuestionInfoByIdInterface $questionRepository
+     */
     public function __construct(
         QuestionInfoByIdInterface $questionRepository
     ) {

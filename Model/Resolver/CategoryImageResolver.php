@@ -21,13 +21,13 @@
 
 namespace Lof\FaqGraphQl\Model\Resolver;
 
+use Lof\Faq\Api\QuestionListByCategoryInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Value;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Lof\Faq\Api\QuestionListByCategoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -71,8 +71,8 @@ class CategoryImageResolver implements ResolverInterface
     {
         if (isset($value['image']) && $value['image']) {
             return $this->_storeManager->getStore()->getBaseUrl(
-                \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-            ) . $value['image'];
+                    \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
+                ) . $value['image'];
         } else {
             return '';
         }

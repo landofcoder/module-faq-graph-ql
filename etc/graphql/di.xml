@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_FaqGraphQl
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+		<arguments>
+			<argument name="extendedConfigData" xsi:type="array">
+                <item name="loffaq_general_settings_enable" xsi:type="string">loffaq/general_settings/enable</item>
+                <item name="loffaq_general_settings_route" xsi:type="string">loffaq/general_settings/route</item>
+                <item name="loffaq_general_settings_question_route" xsi:type="string">loffaq/general_settings/question_route</item>
+                <item name="loffaq_faq_page_layout_type" xsi:type="string">loffaq/faq_page/layout_type</item>
+                <item name="loffaq_faq_page_featuredblock" xsi:type="string">loffaq/faq_page/featuredblock</item>
+                <item name="loffaq_faq_page_number_featured_questions" xsi:type="string">loffaq/faq_page/number_featured_questions</item>
+                <item name="loffaq_faq_page_latestblock" xsi:type="string">loffaq/faq_page/latestblock</item>
+                <item name="loffaq_faq_page_number_latest_questions" xsi:type="string">loffaq/faq_page/number_latest_questions</item>
+                <item name="loffaq_faq_page_column" xsi:type="string">loffaq/faq_page/column</item>
+                <item name="loffaq_faq_page_item_per_page" xsi:type="string">loffaq/faq_page/item_per_page</item>
+                <item name="loffaq_faq_page_show_breadcrumbs" xsi:type="string">loffaq/faq_page/show_breadcrumbs</item>
+                <item name="loffaq_faq_page_show_toolbartop" xsi:type="string">loffaq/faq_page/show_toolbartop</item>
+                <item name="loffaq_faq_page_show_toolbarbottom" xsi:type="string">loffaq/faq_page/show_toolbarbottom</item>
+                <item name="loffaq_faq_page_enable_question_link" xsi:type="string">loffaq/faq_page/enable_question_link</item>
+                <item name="loffaq_faq_page_questionlist_showauthor" xsi:type="string">loffaq/faq_page/questionlist_showauthor</item>
+                <item name="loffaq_faq_page_questionlist_showdate" xsi:type="string">loffaq/faq_page/questionlist_showdate</item>
+                <item name="loffaq_faq_page_questionlist_showcat" xsi:type="string">loffaq/faq_page/questionlist_showcat</item>
+                <item name="loffaq_faq_page_show_desc_cat" xsi:type="string">loffaq/faq_page/show_desc_cat</item>
+                <item name="loffaq_faq_page_showreadmorelink" xsi:type="string">loffaq/faq_page/showreadmorelink</item>
+                <item name="loffaq_faq_page_readmore_char" xsi:type="string">loffaq/faq_page/readmore_char</item>
+                <item name="loffaq_faq_page_searchform_enable" xsi:type="string">loffaq/faq_page/searchform_enable</item>
+                <item name="loffaq_faq_page_title_size" xsi:type="string">loffaq/faq_page/title_size</item>
+                <item name="loffaq_faq_page_title_color" xsi:type="string">loffaq/faq_page/title_color</item>
+                <item name="loffaq_faq_page_title_bg" xsi:type="string">loffaq/faq_page/title_bg</item>
+                <item name="loffaq_faq_page_title_bg_active" xsi:type="string">loffaq/faq_page/title_bg_active</item>
+                <item name="loffaq_faq_page_border_width" xsi:type="string">loffaq/faq_page/border_width</item>
+                <item name="loffaq_faq_page_title_border_color" xsi:type="string">loffaq/faq_page/title_border_color</item>
+                <item name="loffaq_faq_page_title_border_radius" xsi:type="string">loffaq/faq_page/title_border_radius</item>
+                <item name="loffaq_faq_page_body_size" xsi:type="string">loffaq/faq_page/body_size</item>
+                <item name="loffaq_faq_page_body_color" xsi:type="string">loffaq/faq_page/body_color</item>
+                <item name="loffaq_faq_page_body_bg" xsi:type="string">loffaq/faq_page/body_bg</item>
+                <item name="loffaq_faq_page_question_margin" xsi:type="string">loffaq/faq_page/question_margin</item>
+                <item name="loffaq_faq_page_title_color_active" xsi:type="string">loffaq/faq_page/title_color_active</item>
+                <item name="loffaq_faq_page_question_icon" xsi:type="string">loffaq/faq_page/question_icon</item>
+                <item name="loffaq_faq_page_question_active_icon" xsi:type="string">loffaq/faq_page/question_active_icon</item>
+                <item name="loffaq_faq_page_animation_class" xsi:type="string">loffaq/faq_page/animation_class</item>
+                <item name="loffaq_faq_page_animation_speed" xsi:type="string">loffaq/faq_page/animation_speed</item>
+                <item name="loffaq_faq_page_page_title" xsi:type="string">loffaq/faq_page/page_title</item>
+                <item name="loffaq_faq_page_page_layout" xsi:type="string">loffaq/faq_page/page_layout</item>
+                <item name="loffaq_faq_page_meta_description" xsi:type="string">loffaq/faq_page/meta_description</item>
+                <item name="loffaq_faq_page_meta_keywords" xsi:type="string">loffaq/faq_page/meta_keywords</item>
+                <item name="loffaq_category_page_item_per_page" xsi:type="string">loffaq/category_page/item_per_page</item>
+                <item name="loffaq_category_page_show_breadcrumbs" xsi:type="string">loffaq/category_page/show_breadcrumbs</item>
+                <item name="loffaq_category_page_show_toolbartop" xsi:type="string">loffaq/category_page/show_toolbartop</item>
+                <item name="loffaq_category_page_show_toolbarbottom" xsi:type="string">loffaq/category_page/show_toolbarbottom</item>
+                <item name="loffaq_category_page_enable_question_link" xsi:type="string">loffaq/category_page/enable_question_link</item>
+                <item name="loffaq_category_page_showauthor" xsi:type="string">loffaq/category_page/showauthor</item>
+                <item name="loffaq_category_page_showdate" xsi:type="string">loffaq/category_page/showdate</item>
+                <item name="loffaq_category_page_showcat" xsi:type="string">loffaq/category_page/showcat</item>
+                <item name="loffaq_category_page_showreadmorelink" xsi:type="string">loffaq/category_page/showreadmorelink</item>
+                <item name="loffaq_category_page_readmore_char" xsi:type="string">loffaq/category_page/readmore_char</item>
+                <item name="loffaq_category_page_searchform_enable" xsi:type="string">loffaq/category_page/searchform_enable</item>
+                <item name="loffaq_question_page_showauthor" xsi:type="string">loffaq/question_page/showauthor</item>
+                <item name="loffaq_question_page_showdate" xsi:type="string">loffaq/question_page/showdate</item>
+                <item name="loffaq_question_page_showcat" xsi:type="string">loffaq/question_page/showcat</item>
+                <item name="loffaq_question_page_show_likedislike" xsi:type="string">loffaq/question_page/show_likedislike</item>
+                <item name="loffaq_question_page_enable_networks" xsi:type="string">loffaq/question_page/enable_networks</item>
+                <item name="loffaq_question_page_networks" xsi:type="string">loffaq/question_page/networks</item>
+                <item name="loffaq_question_page_enable_relatedquestions" xsi:type="string">loffaq/question_page/enable_relatedquestions</item>
+                <item name="loffaq_question_page_related_template" xsi:type="string">loffaq/question_page/related_template</item>
+                <item name="loffaq_faq_productpage_enable" xsi:type="string">loffaq/faq_productpage/enable</item>
+                <item name="loffaq_faq_productpage_layout_type" xsi:type="string">loffaq/faq_productpage/layout_type</item>
+                <item name="loffaq_faq_productpage_item_per_page" xsi:type="string">loffaq/faq_productpage/item_per_page</item>
+                <item name="loffaq_faq_productpage_show_toolbartop" xsi:type="string">loffaq/faq_productpage/show_toolbartop</item>
+                <item name="loffaq_faq_productpage_show_toolbarbottom" xsi:type="string">loffaq/faq_productpage/show_toolbarbottom</item>
+                <item name="loffaq_faq_productpage_showauthor" xsi:type="string">loffaq/faq_productpage/showauthor</item>
+                <item name="loffaq_faq_productpage_showdate" xsi:type="string">loffaq/faq_productpage/showdate</item>
+                <item name="loffaq_faq_productpage_showcat" xsi:type="string">loffaq/faq_productpage/showcat</item>
+                <item name="loffaq_faq_productpage_showreadmorelink" xsi:type="string">loffaq/faq_productpage/showreadmorelink</item>
+                <item name="loffaq_faq_productpage_readmore_char" xsi:type="string">loffaq/faq_productpage/readmore_char</item>
+                <item name="loffaq_faq_productpage_enable_popup" xsi:type="string">loffaq/faq_productpage/enable_popup</item>
+                <item name="loffaq_faq_productpage_enable_recaptcha" xsi:type="string">loffaq/faq_productpage/enable_recaptcha</item>
+                <item name="loffaq_faq_productpage_enable_categories" xsi:type="string">loffaq/faq_productpage/enable_categories</item>
+                <item name="loffaq_sidebar_show_tagblock" xsi:type="string">loffaq/sidebar/show_tagblock</item>
+                <item name="loffaq_sidebar_tagblock_title" xsi:type="string">loffaq/sidebar/tagblock_title</item>
+                <item name="loffaq_sidebar_show_tagcountdown" xsi:type="string">loffaq/sidebar/show_tagcountdown</item>
+                <item name="loffaq_sidebar_tags_per_page" xsi:type="string">loffaq/sidebar/tags_per_page</item>
+                <item name="loffaq_email_settings_email_receive" xsi:type="string">loffaq/email_settings/email_receive</item>
+                <item name="loffaq_email_settings_email_template" xsi:type="string">loffaq/email_settings/email_template</item>
+                <item name="loffaq_email_settings_sender_email_identity" xsi:type="string">loffaq/email_settings/sender_email_identity</item>
+                <item name="loffaq_email_settings_enable_testmode" xsi:type="string">loffaq/email_settings/enable_testmode</item>
+                <item name="loffaq_recaptcha_settings_publickey" xsi:type="string">loffaq/recaptcha_settings/publickey</item>
+                <item name="loffaq_recaptcha_settings_privatekey" xsi:type="string">loffaq/recaptcha_settings/privatekey</item>
+
+            </argument>
+		</arguments>
+	</type>
+</config>

@@ -26,6 +26,9 @@ use Lof\Faq\Api\TagsInterface;
 class FaqTag
 {
 
+    /**
+     * @var TagsInterface
+     */
     private $tagsManagement;
 
     /**
@@ -37,6 +40,9 @@ class FaqTag
         $this->tagsManagement = $tagsManagement;
     }
 
+    /**
+     * @return string
+     */
     public function getFaqTag()
     {
         return 'proviced data';

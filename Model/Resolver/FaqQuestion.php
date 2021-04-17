@@ -28,6 +28,9 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 class FaqQuestion implements ResolverInterface
 {
 
+    /**
+     * @var DataProvider\FaqQuestion
+     */
     private $faqQuestionDataProvider;
 
     /**

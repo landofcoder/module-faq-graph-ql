@@ -39,6 +39,10 @@ class QuestionTagResolver implements ResolverInterface
      */
     private $tagCollection;
 
+    /**
+     * QuestionTagResolver constructor.
+     * @param CollectionFactory $tagCollection
+     */
     public function __construct(
         CollectionFactory $tagCollection
     ) {

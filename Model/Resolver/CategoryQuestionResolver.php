@@ -21,12 +21,12 @@
 
 namespace Lof\FaqGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
+use Lof\Faq\Api\QuestionListByCategoryInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Value;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Lof\Faq\Api\QuestionListByCategoryInterface;
 
 /**
  * Class to resolve custom attribute_set_name field in faq category GraphQL query

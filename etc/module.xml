@@ -24,6 +24,7 @@
 		<sequence>
 			<module name="Magento_GraphQl"/>
 			<module name="Lof_Faq"/>
-		</sequence>
+            <module name="Magento_StoreGraphQl"/>
+        </sequence>
 	</module>
 </config>

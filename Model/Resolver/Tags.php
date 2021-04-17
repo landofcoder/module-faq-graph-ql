@@ -36,6 +36,10 @@ class Tags implements ResolverInterface
      */
     private $tagCollectionFactory;
 
+    /**
+     * Tags constructor.
+     * @param CollectionFactory $tagCollection
+     */
     public function __construct(
         CollectionFactory $tagCollection
     ) {

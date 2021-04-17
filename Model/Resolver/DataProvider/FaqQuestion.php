@@ -23,10 +23,6 @@ namespace Lof\FaqGraphQl\Model\Resolver\DataProvider;
 
 use Lof\Faq\Api\QuestionManagementInterface;
 
-/**
- * Class FaqQuestion
- * @package Lof\FaqGraphQl\Model\Resolver\DataProvider
- */
 class FaqQuestion
 {
 

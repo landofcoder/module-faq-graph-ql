@@ -54,6 +54,15 @@ class FaqCreateQuestion implements ResolverInterface
      */
     private $_transportBuilder;
 
+    /**
+     * FaqCreateQuestion constructor.
+     * @param \Magento\Framework\View\LayoutInterface $layout
+     * @param \Magento\Store\Model\StoreManager $storeManager
+     * @param \Lof\Faq\Model\QuestionFactory $questionFactory
+     * @param \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
+     * @param \Lof\Faq\Helper\Data $faqHelper
+     * @param \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
+     */
     public function __construct(
         \Magento\Framework\View\LayoutInterface $layout,
         \Magento\Store\Model\StoreManager $storeManager,
@@ -67,7 +76,7 @@ class FaqCreateQuestion implements ResolverInterface
         $this->questionFactory = $questionFactory;
         $this->inlineTranslation = $inlineTranslation;
         $this->_faqHelper = $faqHelper;
-        $this->_transportBuilder    = $transportBuilder;
+        $this->_transportBuilder = $transportBuilder;
     }
 
     /**
@@ -117,10 +126,10 @@ class FaqCreateQuestion implements ResolverInterface
         $this->inlineTranslation->suspend();
         $enable_testmode = $this->_faqHelper->getConfig('email_settings/enable_testmode');
         if (!$enable_testmode && $this->_faqHelper->getConfig('email_settings/email_receive') != '') {
-//            $data['message'] = $this->_layout->createBlock(\Magento\Framework\View\Element\Template::class)
-//                ->setTemplate("Lof_Faq::email/items.phtml")
-//                ->setCustomFormData($custom_form_data)
-//                ->toHtml();
+            $data['message'] = $this->_layout->createBlock(\Magento\Framework\View\Element\Template::class)
+                ->setTemplate("Lof_Faq::email/items.phtml")
+                ->setCustomFormData($custom_form_data)
+                ->toHtml();
             $emails = $this->_faqHelper->getConfig('email_settings/email_receive');
             $emails = explode(',', $emails);
             foreach ($emails as $v) {

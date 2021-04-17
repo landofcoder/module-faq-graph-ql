@@ -1,4 +1,92 @@
 
+type StoreConfig {
+
+    loffaq_general_settings_enable : String
+    loffaq_general_settings_route : String
+    loffaq_general_settings_question_route : String
+    loffaq_faq_page_layout_type : String
+    loffaq_faq_page_featuredblock : String
+    loffaq_faq_page_number_featured_questions : String
+    loffaq_faq_page_latestblock : String
+    loffaq_faq_page_number_latest_questions : String
+    loffaq_faq_page_column : String
+    loffaq_faq_page_item_per_page : String
+    loffaq_faq_page_show_breadcrumbs : String
+    loffaq_faq_page_show_toolbartop : String
+    loffaq_faq_page_show_toolbarbottom : String
+    loffaq_faq_page_enable_question_link : String
+    loffaq_faq_page_questionlist_showauthor : String
+    loffaq_faq_page_questionlist_showdate : String
+    loffaq_faq_page_questionlist_showcat : String
+    loffaq_faq_page_show_desc_cat : String
+    loffaq_faq_page_showreadmorelink : String
+    loffaq_faq_page_readmore_char : String
+    loffaq_faq_page_searchform_enable : String
+    loffaq_faq_page_title_size : String
+    loffaq_faq_page_title_color : String
+    loffaq_faq_page_title_bg : String
+    loffaq_faq_page_title_bg_active : String
+    loffaq_faq_page_border_width : String
+    loffaq_faq_page_title_border_color : String
+    loffaq_faq_page_title_border_radius : String
+    loffaq_faq_page_body_size : String
+    loffaq_faq_page_body_color : String
+    loffaq_faq_page_body_bg : String
+    loffaq_faq_page_question_margin : String
+    loffaq_faq_page_title_color_active : String
+    loffaq_faq_page_question_icon : String
+    loffaq_faq_page_question_active_icon : String
+    loffaq_faq_page_animation_class : String
+    loffaq_faq_page_animation_speed : String
+    loffaq_faq_page_page_title : String
+    loffaq_faq_page_page_layout : String
+    loffaq_faq_page_meta_description : String
+    loffaq_faq_page_meta_keywords : String
+    loffaq_category_page_item_per_page : String
+    loffaq_category_page_show_breadcrumbs : String
+    loffaq_category_page_show_toolbartop : String
+    loffaq_category_page_show_toolbarbottom : String
+    loffaq_category_page_enable_question_link : String
+    loffaq_category_page_showauthor : String
+    loffaq_category_page_showdate : String
+    loffaq_category_page_showcat : String
+    loffaq_category_page_showreadmorelink : String
+    loffaq_category_page_readmore_char : String
+    loffaq_category_page_searchform_enable : String
+    loffaq_question_page_showauthor : String
+    loffaq_question_page_showdate : String
+    loffaq_question_page_showcat : String
+    loffaq_question_page_show_likedislike : String
+    loffaq_question_page_enable_networks : String
+    loffaq_question_page_networks : String
+    loffaq_question_page_enable_relatedquestions : String
+    loffaq_question_page_related_template : String
+    loffaq_faq_productpage_enable : String
+    loffaq_faq_productpage_layout_type : String
+    loffaq_faq_productpage_item_per_page : String
+    loffaq_faq_productpage_show_toolbartop : String
+    loffaq_faq_productpage_show_toolbarbottom : String
+    loffaq_faq_productpage_showauthor : String
+    loffaq_faq_productpage_showdate : String
+    loffaq_faq_productpage_showcat : String
+    loffaq_faq_productpage_showreadmorelink : String
+    loffaq_faq_productpage_readmore_char : String
+    loffaq_faq_productpage_enable_popup : String
+    loffaq_faq_productpage_enable_recaptcha : String
+    loffaq_faq_productpage_enable_categories : String
+    loffaq_sidebar_show_tagblock : String
+    loffaq_sidebar_tagblock_title : String
+    loffaq_sidebar_show_tagcountdown : String
+    loffaq_sidebar_tags_per_page : String
+    loffaq_email_settings_email_receive : String
+    loffaq_email_settings_email_template : String
+    loffaq_email_settings_sender_email_identity : String
+    loffaq_email_settings_enable_testmode : String
+    loffaq_recaptcha_settings_publickey : String
+    loffaq_recaptcha_settings_privatekey : String
+
+}
+
 type Query {
 
     faqQuestion (

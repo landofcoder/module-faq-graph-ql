@@ -31,6 +31,9 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 class FaqTag implements ResolverInterface
 {
 
+    /**
+     * @var DataProvider\FaqTag
+     */
     private $faqTagDataProvider;
 
     /**

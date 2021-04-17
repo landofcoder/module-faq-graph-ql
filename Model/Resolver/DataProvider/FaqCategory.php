@@ -23,10 +23,6 @@ namespace Lof\FaqGraphQl\Model\Resolver\DataProvider;
 
 use Lof\Faq\Api\CategoriesInterface;
 
-/**
- * Class FaqCategory
- * @package Lof\FaqGraphQl\Model\Resolver\DataProvider
- */
 class FaqCategory
 {
 

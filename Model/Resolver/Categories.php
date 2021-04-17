@@ -23,12 +23,12 @@ declare(strict_types=1);
 
 namespace Lof\FaqGraphQl\Model\Resolver;
 
+use Lof\Faq\Api\CategoriesInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder as SearchCriteriaBuilder;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Lof\Faq\Api\CategoriesInterface;
-use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\Builder as SearchCriteriaBuilder;
 
 class Categories implements ResolverInterface
 {
@@ -41,6 +41,11 @@ class Categories implements ResolverInterface
      */
     private $categoryInterface;
 
+    /**
+     * Categories constructor.
+     * @param CategoriesInterface $categories
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     */
     public function __construct(
         CategoriesInterface $categories,
         SearchCriteriaBuilder $searchCriteriaBuilder
@@ -77,7 +82,7 @@ class Categories implements ResolverInterface
 
         return [
             'total_count' => $searchResult->getTotalCount(),
-            'items'       => $searchResult->getItems(),
+            'items' => $searchResult->getItems(),
             'page_info' => [
                 'page_size' => $args['pageSize'],
                 'current_page' => $args['currentPage'],

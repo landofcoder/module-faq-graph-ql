@@ -39,6 +39,10 @@ class QuestionCategoryResolver implements ResolverInterface
      */
     private $categoryInterface;
 
+    /**
+     * QuestionCategoryResolver constructor.
+     * @param CategoriesInterface $categoryInterface
+     */
     public function __construct(
         CategoriesInterface $categoryInterface
     ) {
