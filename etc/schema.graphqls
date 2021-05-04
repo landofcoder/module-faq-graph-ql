@@ -1,15 +1,124 @@
 
+type StoreConfig {
+
+    loffaq_general_settings_enable : String
+    loffaq_general_settings_route : String
+    loffaq_general_settings_question_route : String
+    loffaq_faq_page_layout_type : String
+    loffaq_faq_page_featuredblock : String
+    loffaq_faq_page_number_featured_questions : String
+    loffaq_faq_page_latestblock : String
+    loffaq_faq_page_number_latest_questions : String
+    loffaq_faq_page_column : String
+    loffaq_faq_page_item_per_page : String
+    loffaq_faq_page_show_breadcrumbs : String
+    loffaq_faq_page_show_toolbartop : String
+    loffaq_faq_page_show_toolbarbottom : String
+    loffaq_faq_page_enable_question_link : String
+    loffaq_faq_page_questionlist_showauthor : String
+    loffaq_faq_page_questionlist_showdate : String
+    loffaq_faq_page_questionlist_showcat : String
+    loffaq_faq_page_show_desc_cat : String
+    loffaq_faq_page_showreadmorelink : String
+    loffaq_faq_page_readmore_char : String
+    loffaq_faq_page_searchform_enable : String
+    loffaq_faq_page_title_size : String
+    loffaq_faq_page_title_color : String
+    loffaq_faq_page_title_bg : String
+    loffaq_faq_page_title_bg_active : String
+    loffaq_faq_page_border_width : String
+    loffaq_faq_page_title_border_color : String
+    loffaq_faq_page_title_border_radius : String
+    loffaq_faq_page_body_size : String
+    loffaq_faq_page_body_color : String
+    loffaq_faq_page_body_bg : String
+    loffaq_faq_page_question_margin : String
+    loffaq_faq_page_title_color_active : String
+    loffaq_faq_page_question_icon : String
+    loffaq_faq_page_question_active_icon : String
+    loffaq_faq_page_animation_class : String
+    loffaq_faq_page_animation_speed : String
+    loffaq_faq_page_page_title : String
+    loffaq_faq_page_page_layout : String
+    loffaq_faq_page_meta_description : String
+    loffaq_faq_page_meta_keywords : String
+    loffaq_category_page_item_per_page : String
+    loffaq_category_page_show_breadcrumbs : String
+    loffaq_category_page_show_toolbartop : String
+    loffaq_category_page_show_toolbarbottom : String
+    loffaq_category_page_enable_question_link : String
+    loffaq_category_page_showauthor : String
+    loffaq_category_page_showdate : String
+    loffaq_category_page_showcat : String
+    loffaq_category_page_showreadmorelink : String
+    loffaq_category_page_readmore_char : String
+    loffaq_category_page_searchform_enable : String
+    loffaq_question_page_showauthor : String
+    loffaq_question_page_showdate : String
+    loffaq_question_page_showcat : String
+    loffaq_question_page_show_likedislike : String
+    loffaq_question_page_enable_networks : String
+    loffaq_question_page_networks : String
+    loffaq_question_page_enable_relatedquestions : String
+    loffaq_question_page_related_template : String
+    loffaq_faq_productpage_enable : String
+    loffaq_faq_productpage_layout_type : String
+    loffaq_faq_productpage_item_per_page : String
+    loffaq_faq_productpage_show_toolbartop : String
+    loffaq_faq_productpage_show_toolbarbottom : String
+    loffaq_faq_productpage_showauthor : String
+    loffaq_faq_productpage_showdate : String
+    loffaq_faq_productpage_showcat : String
+    loffaq_faq_productpage_showreadmorelink : String
+    loffaq_faq_productpage_readmore_char : String
+    loffaq_faq_productpage_enable_popup : String
+    loffaq_faq_productpage_enable_recaptcha : String
+    loffaq_faq_productpage_enable_categories : String
+    loffaq_sidebar_show_tagblock : String
+    loffaq_sidebar_tagblock_title : String
+    loffaq_sidebar_show_tagcountdown : String
+    loffaq_sidebar_tags_per_page : String
+    loffaq_email_settings_email_receive : String
+    loffaq_email_settings_email_template : String
+    loffaq_email_settings_sender_email_identity : String
+    loffaq_email_settings_enable_testmode : String
+    loffaq_recaptcha_settings_publickey : String
+    loffaq_recaptcha_settings_privatekey : String
+
+}
+
 type Query {
 
     faqQuestion (
         question_id: String @doc(description: "Query by question_id.")
     ): FaqQuestion @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqQuestion") @doc(description: "get list faq questions")
+
     faqCategory (
         category_id: String @doc(description: "Query by category_id.")
     ): FaqCategory @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqCategory") @doc(description: "get list faq question categories")
+
     faqTag (
         tag_id: String @doc(description: "Query by tag_id.")
     ): FaqTag @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqTag") @doc(description: "get list faq question tags")
+
+    faqCategoryList(
+        search: String @doc(description: "Performs a full-text search using the specified key words."),
+        filter: FaqCategoryFilterInput @doc(description: "Identifies which product attributes to search for and return."),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. This attribute is optional."),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1."),
+    ): FaqCategories @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\Categories") @doc(description: "The categories query searches for categories that match the criteria specified in the search and filter attributes")
+
+    faqTagList(
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. This attribute is optional."),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1."),
+    ): FaqTags @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\Tags") @doc(description: "The tags query searches for tags that match the criteria specified in the search and filter attributes")
+
+    faqQuestionList(
+        search: String @doc(description: "Performs a full-text search using the specified key words."),
+        filter: FaqQuestionFilterInput @doc(description: "Identifies which product attributes to search for and return."),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. This attribute is optional."),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1."),
+    ): FaqQuestions @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\Questions") @doc(description: "The categories query searches for categories that match the criteria specified in the search and filter attributes")
 }
 
 type FaqQuestion {
@@ -27,6 +136,14 @@ type FaqQuestion {
     meta_keywords : String  @doc(description: "meta_keywords")
     meta_description : String  @doc(description: "meta_description")
     question_position : String  @doc(description: "question_position")
+    categories : FaqCategories @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionCategoryResolver")
+    tags : Tags @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionTagResolver")
+    question_product : [String]
+    store_id : [String]
+    relatedquestions : FaqQuestions @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\QuestionRelatedResolver")
+    like : Int
+    disklike : Int
+
 }
 
 type FaqCategory {
@@ -37,33 +154,105 @@ type FaqCategory {
     identifier : String  @doc(description: "identifier")
     description : String  @doc(description: "description")
     is_active : String  @doc(description: "is_active")
+    grid_column : String  @doc(description: "grid_column")
+    layout_type : String  @doc(description: "layout_type")
+    page_layout : String  @doc(description: "page_layout")
+    meta_keywords : String  @doc(description: "meta_keywords")
+    meta_description : String  @doc(description: "meta_description")
+    image : String  @doc(description: "Image.") @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\CategoryImageResolver")
+    creation_time : String  @doc(description: "creation_time")
+    update_time : String  @doc(description: "update_time")
+    position : String  @doc(description: "position")
+    include_in_sidebar : String  @doc(description: "include_in_sidebar")
+    parent_id : String  @doc(description: "parent_id")
+    title_size : String  @doc(description: "title_size")
+    title_color : String  @doc(description: "title_color")
+    title_color_active : String  @doc(description: "title_color_active")
+    title_bg : String  @doc(description: "title_bg")
+    title_bg_active : String  @doc(description: "title_bg_active")
+    border_width : String  @doc(description: "border_width")
+    title_border_color : String  @doc(description: "title_border_color")
+    title_border_radius : String  @doc(description: "title_border_radius")
+    body_size : String  @doc(description: "body_size")
+    body_color : String  @doc(description: "body_color")
+    body_bg : String  @doc(description: "body_bg")
+    question_margin : String  @doc(description: "question_margin")
+    question_icon : String  @doc(description: "question_icon")
+    question_active_icon : String  @doc(description: "question_active_icon")
+    animation_class : String  @doc(description: "animation_class")
+    animation_speed : String  @doc(description: "animation_speed")
+    cat_icon : String  @doc(description: "cat_icon")
+    questions : FaqQuestions @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\CategoryQuestionResolver")
+    store_id : [String]
+}
+
+type FaqQuestions {
+    total_count: Int @doc(description: "The number of question returned")
+    page_info: SearchResultPageInfo @doc(description: "Page info")
+    items: [FaqQuestion] @doc(description: "An array of questions")
+}
+
+type FaqCategories {
+    total_count: Int @doc(description: "The number of categories returned")
+    page_info: SearchResultPageInfo @doc(description: "Page info")
+    items: [FaqCategory] @doc(description: "An array of categories")
+}
+
+type FaqTags {
+    total_count: Int @doc(description: "The number of tags returned")
+    page_info: SearchResultPageInfo @doc(description: "Page info")
+    items: [FaqTag] @doc(description: "An array of tags")
+}
+
+type Tags {
+    total_count : Int
+    items : [FaqTag]
 }
 
 type FaqTag {
 
-    tag_id : String  @doc(description: "tag_id")
-    question_id : String  @doc(description: "question_id")
     name : String  @doc(description: "name")
     alias : String  @doc(description: "alias")
+    total_question : Int @doc(description: "total question") @resolver(class: "\\Lof\\FaqGraphQl\\Model\\Resolver\\TagQuestionResolver")
+}
+
+type Res {
+    code : Int @doc(description: "Mutation status")
+    message : String @doc(description: "Message")
 }
 
 type Mutation {
 
-    faqSubmitQuestion (
-        title: String @doc(description: "Query by title.")
-        author_email: String @doc(description: "Query by author_email.")
-        author_name: String @doc(description: "Query by author_name.")
-        answer: String @doc(description: "Query by answer.")
-        creation_time: String @doc(description: "Query by creation_time.")
-        update_time: String @doc(description: "Query by update_time.")
-        is_featured: String @doc(description: "Query by is_featured.")
-        is_active: String @doc(description: "Query by is_active.")
-        page_title: String @doc(description: "Query by page_title.")
-        meta_keywords: String @doc(description: "Query by meta_keywords.")
-        meta_description: String @doc(description: "Query by meta_description.")
-        question_position: String @doc(description: "Query by question_position.")
-        stores: String @doc(description: "Query by stores.")
-        question_products: String @doc(description: "Query by question_products.")
-        categories: String @doc(description: "Query by categories.")
-    ): String @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqSubmitQuestion") @doc(description: "Submit faq question on product detail page")
+    faqCreateQuestion (
+        title: String! @doc(description: "Query by title.")
+        author_email: String! @doc(description: "Query by author_email.")
+        author_name: String! @doc(description: "Query by author_name.")
+        product_id: String! @doc(description: "Product Id")
+    ): Res @resolver( class: "Lof\\FaqGraphQl\\Model\\Resolver\\FaqCreateQuestion") @doc(description: "Submit faq question on product detail page")
+
+}
+
+input FaqCategoryFilterInput {
+    category_id: FilterTypeInput @doc(description: "Category ID")
+    identifier: FilterTypeInput @doc(description: "Identifier")
+    is_active: FilterTypeInput @doc(description: "Status")
+    title: FilterTypeInput @doc(description: "Title")
+    layout_type: FilterTypeInput @doc(description: "Layout Type")
+    or: FaqCategoryFilterInput @doc(description: "The keyword required to perform a logical OR comparison")
+}
+
+input FaqQuestionFilterInput {
+    question_id: FilterTypeInput @doc(description: "Question ID")
+    title: FilterTypeInput @doc(description: "Title")
+    author_email: FilterTypeInput @doc(description: "Author Email")
+    author_name: FilterTypeInput @doc(description: "Author Name")
+    is_featured: FilterTypeInput @doc(description: "Is Featured")
+    is_active: FilterTypeInput @doc(description: "Is Active")
+    like: FilterTypeInput @doc(description: "like")
+    disklike: FilterTypeInput @doc(description: "dislike")
+    tag: String @doc(description: "Tag")
+    category_identifier: String @doc(description: "Category Identifier")
+    product_sku: String @doc(description: "Product Sku")
+    or: FaqCategoryFilterInput @doc(description: "The keyword required to perform a logical OR comparison")
+
 }
