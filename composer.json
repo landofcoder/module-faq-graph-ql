@@ -23,7 +23,6 @@
         }
     ],
     "require": {
-        "landofcoder/module-all" : "1.*"
     },
     "autoload": {
         "psr-4": {
