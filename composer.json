@@ -2,6 +2,7 @@
     "name": "l/module-faq-graph-ql",
     "description": "Magento 2 Faq Graph Ql extension is free module support graph ql for magento 2.3.x the module require commerce Lof Faq extension",
     "type": "magento2-module",
+    "version": "1.0.1",
     "keywords": [
         "landofcoder",
         "landofcoder faq",
