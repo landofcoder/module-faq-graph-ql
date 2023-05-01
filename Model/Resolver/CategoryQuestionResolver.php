@@ -50,13 +50,7 @@ class CategoryQuestionResolver implements ResolverInterface
     }
 
     /**
-     * @param Field $field
-     * @param ContextInterface $context
-     * @param ResolveInfo $info
-     * @param array|null $value
-     * @param array|null $args
-     * @return array|Value|mixed
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @inheritDoc
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {

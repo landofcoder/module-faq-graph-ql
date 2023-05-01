@@ -59,17 +59,11 @@ class CategoryImageResolver implements ResolverInterface
     }
 
     /**
-     * @param Field $field
-     * @param ContextInterface $context
-     * @param ResolveInfo $info
-     * @param array|null $value
-     * @param array|null $args
-     * @return array|Value|mixed
-     * @throws LocalizedException
+     * @inheritDoc
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
-        if (isset($value['image']) && $value['image']) {
+        if (is_array($value) && isset($value['image']) && $value['image']) {
             return $this->_storeManager->getStore()->getBaseUrl(
                     \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
                 ) . $value['image'];

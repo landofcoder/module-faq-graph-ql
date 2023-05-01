@@ -79,10 +79,13 @@ class Categories implements ResolverInterface
         }
         $searchResult = $this->categoryInterface->getList($searchCriteria, $search);
         $totalPages = $args['pageSize'] ? ((int)ceil($searchResult->getTotalCount() / $args['pageSize'])) : 0;
-
+        $items = [];
+        foreach ($searchResult->getItems() as $_item) {
+            $items[] = $_item->toArray();
+        }
         return [
             'total_count' => $searchResult->getTotalCount(),
-            'items' => $searchResult->getItems(),
+            'items' => $items,
             'page_info' => [
                 'page_size' => $args['pageSize'],
                 'current_page' => $args['currentPage'],
