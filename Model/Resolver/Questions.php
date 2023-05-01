@@ -95,9 +95,14 @@ class Questions implements ResolverInterface
         $searchResult = $this->questionRepository->getList($searchCriteria, $search, $tag, $identifier, $sku);
         $totalPages = $args['pageSize'] ? ((int)ceil($searchResult->getTotalCount() / $args['pageSize'])) : 0;
 
+        $items = [];
+        foreach ($searchResult->getItems() as $_item) {
+            $items[] = is_array($_item) ? $_item : $_item->toArray();
+        }
+
         return [
             'total_count' => $searchResult->getTotalCount(),
-            'items'       => $searchResult->getItems(),
+            'items'       => $items,
             'page_info' => [
                 'page_size' => $args['pageSize'],
                 'current_page' => $args['currentPage'],

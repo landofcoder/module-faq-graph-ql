@@ -61,9 +61,13 @@ class QuestionTagResolver implements ResolverInterface
     {
         if (isset($value['question_id']) && $value['question_id']) {
             $collection = $this->tagCollection->create()->addFieldToFilter('question_id', $value['question_id']);
+            $items = [];
+            foreach($collection->getItems() as $_item) {
+                $items[] = $_item->getData();
+            }
             return [
                 'total_count' => $collection->getSize(),
-                'items' => $collection->getItems()
+                'items' => $items
             ];
         } else {
             return [];

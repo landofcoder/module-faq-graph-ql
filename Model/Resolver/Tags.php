@@ -67,9 +67,13 @@ class Tags implements ResolverInterface
         $collection->setCurPage($args['currentPage']);
         $collection->setPageSize($args['pageSize']);
 
+        $items = [];
+        foreach ($collection as $_item) {
+            $items[] = $_item->getdata();
+        }
         return [
             'total_count' => $collection->getSize(),
-            'items'       => $collection->getData(),
+            'items'       => $items,
             'page_info' => [
                 'page_size' => $collection->getPageSize(),
                 'current_page' => $collection->getCurPage(),
